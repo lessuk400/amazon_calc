@@ -13,6 +13,9 @@ gem 'uglifier',   '>= 1.3.0'
 gem 'turbolinks', '~> 5'
 gem 'haml-rails', '~> 1.0'
 gem 'bootsnap',   '>= 1.1.0', require: false
+gem 'bootstrap',  '~> 4.1.3'
+gem 'jquery-rails'
+gem 'simple_form'
 
 group :development, :test do
   gem 'pry-rails'
