@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+Market.create(name: 'Amazon')
+MarketPlace.create(name: 'UK', market_id: 1)
+Dimension.create(height: 23, length: 15.5, width: 0.4, name: 'Small Letter', market_place_id: 1)
+Fee.create(weight: 0.1, price: 0.6, market_place_id: 1, dimension_id: 1)
+Category.create(title: 'Additive Manufacturing', market_place_id: 1)
+ReferralFee.create(fee: 12, market_place_id: 1, category_id: 1)

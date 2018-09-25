@@ -2,7 +2,13 @@ version: 2
 jobs:
   build:
     docker:
-    - image: circleci/ruby:2.5.2-node-browsers
+    - image: circleci/ruby:2.5.0-node-browsers
+      environment:
+        DATABASE_HOST:          localhost
+        APP_NAME:               amazon_calc
+        DATABASE_USERNAME:      ubuntu
+        RAILS_ENV:              test
+        CIRCLE_CI_RUBY_VERSION: 2.5.0
 
     working_directory: ~/repo
 
@@ -31,20 +37,6 @@ jobs:
     - run:
         name:    Rubocop
         command: bundle exec rubocop
-
-    - run:
-        name:    Split tests
-        command: |
-          mkdir /tmp/test-results
-          TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)"
-
-    - run:
-        name:    Run Unit/Integration tests
-        command: bundle exec rspec --exclude-pattern "spec/features/**/*"
-
-    - run:
-        name:    Run Acceptance tests
-        command: bundle exec rspec spec/features
 
     - store_test_results:
         path: /tmp/test-results

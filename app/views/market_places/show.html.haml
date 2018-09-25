@@ -1,0 +1,51 @@
+.container
+  .row.center-block
+    .col-12
+      %h1.text-center Bitbond
+      %h4.text-center Calculate your cash on cash return on Amazon
+      %h3.text-center Amazon ROI calculator
+      %h4.text-center How high are your returns?
+
+      = simple_form_for :product, url: market_place_calculations_path(1) do |f|
+        .calculation-input
+          .col-8.m-auto
+            %p Product`s retail packaging:
+            .row
+              .col-3
+                = f.input :height, label: false, placeholder: 'Height', input_html: { class: 'form-control input-field' }
+              .col-3
+                = f.input :width,  label: false, placeholder: 'Width',  input_html: { class: 'form-control input-field' }
+              .col-3
+                = f.input :length, label: false, placeholder: 'Length', input_html: { class: 'form-control input-field' }
+              .col-3
+                = f.input :weight, label: false, placeholder: 'Weight', input_html: { class: 'form-control input-field' }
+
+          .col-8.m-auto
+            .row.mt-3
+              .col-6
+                = f.input :units, label: false, placeholder: 'Shipment size (# of units)', input_html: { class: 'form-control input-field' }
+              .col-6
+                = f.input :marketplace, label: false, placeholder: 'Choose your Amazon Marketplace', input_html: { class: 'form-control input-field' }
+            .row.mt-3
+              .col-6
+                = f.input :duties, label: false, placeholder: 'Total Duties & VAT', input_html: { class: 'form-control input-field' }
+              .col-6
+                = f.input :shipping_costs, label: false, placeholder: 'Total inbound shipping costs', input_html: { class: 'form-control input-field' }
+            .row.mt-3
+              .col-6
+                = f.input :purchasing_price_per_unit, label: false, placeholder: 'Purchasing price per unit', input_html: { class: 'form-control input-field' }
+              .col-6
+                = f.input :sales_price_per_unit, label: false, placeholder: 'Sales price per unit', input_html: { class: 'form-control input-field' }
+            .row.mt-3
+              .col-6
+                = f.input :advertising_spend, label: false, placeholder: 'Advertising spend', input_html: { class: 'form-control input-field' }
+              .col-6
+                = f.input :category, label: false, placeholder: 'Category', input_html: { class: 'form-control input-field' }
+            .row.mt-3
+              .col-6.m-auto
+                = f.input :category, label: false, placeholder: 'Category', input_html: { class: 'form-control input-field' }
+
+          .col-8.m-auto
+            .row.mt-5.justify-content-center
+              .col-6
+                = f.button :submit, 'Calculate Your Roi', class: 'form-control submit-button'
