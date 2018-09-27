@@ -15,8 +15,10 @@ module Calculations
 
     private
 
+    attr_reader :height, :length, :weight, :width
+
     def search_params
-      Array[@weight, @length, @width, @height]
+      Array[weight, length, width, height]
     end
 
     def appropriate_fba_fee
