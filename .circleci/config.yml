@@ -9,6 +9,10 @@ jobs:
         DATABASE_USERNAME:      ubuntu
         RAILS_ENV:              test
         CIRCLE_CI_RUBY_VERSION: 2.5.0
+    - image: circleci/postgres:9.5-alpine
+      environment:
+        POSTGRES_USER: ubuntu
+        POSTGRES_DB:   amazon_calc_test
 
     working_directory: ~/repo
 

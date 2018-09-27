@@ -5,7 +5,7 @@ class CreateFees < ActiveRecord::Migration[5.2]
       t.float :price
 
       t.references :market_place, index: true, foreign_key: true
-      t.references :dimension   , index: true, foreign_key: true
+      t.references :dimension,    index: true, foreign_key: true
 
       t.timestamps
     end
