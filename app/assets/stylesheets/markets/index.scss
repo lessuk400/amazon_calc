@@ -6,6 +6,12 @@
   ::-webkit-input-placeholder {
     text-align: center;
     color: #a1bcc6;
+    white-space: pre-line;
+  }
+
+  select {
+    text-align: center;
+    text-align-last: center;
   }
 
   .form-control {
@@ -15,8 +21,9 @@
     padding: 15px 15px;
   }
 
-  .row input {
-    color: white;
+  .row input, select {
+    color: #a1bcc6;
+    white-space: pre-line;
   }
 
   .row .col-3 input {
@@ -24,6 +31,10 @@
   }
 
   .row .col-6 input {
+    height: 4.5rem;
+  }
+
+  .row .col-6 select {
     height: 4.5rem;
   }
 

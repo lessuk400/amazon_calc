@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
 class CalculationsController < ApplicationController
-  def create; end
+  def create
+    @facade = Calculations::CreateFacade.new(info: params[:info])
+  end
 end

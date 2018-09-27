@@ -3,5 +3,5 @@
     .col-12
       %h1.text-center Bitbond
 
-      %button.btn.btn-primary
-        = link_to 'Amazon', market_place_path(1)
+      - Market.all.each do |market|
+        = link_to market.name, market_path(market), class: 'btn btn-primary'
