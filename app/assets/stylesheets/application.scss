@@ -1,1 +1,11 @@
 @import "bootstrap";
+@import 'markets/index';
+
+body {
+  background: #005272;
+  color: white;
+
+  & .container {
+    margin-top: 75px;
+  }
+}
