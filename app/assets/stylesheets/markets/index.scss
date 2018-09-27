@@ -1,6 +1,10 @@
 .calculation-input {
   .input-field {
     background-color: #0d4a66;
+
+    &:focus {
+      background: #18546f;
+    }
   }
 
   ::-webkit-input-placeholder {
@@ -45,6 +49,16 @@
     font-size: 1.5rem;
     text-transform: uppercase;
     font-weight: bold;
+  }
+
+  select {
+    &:focus {
+      color: #a1bcc6;
+    }
+
+    option {
+      color: white;
+    }
   }
 }
 
