@@ -14,6 +14,33 @@
   }
 
   p {
-    margin-top: 1rem;
+    font-size: 1.5rem;
+  }
+}
+
+.cta-box {
+  background: #51beec;
+  border: solid 8px white;
+  position: absolute;
+  width: 400px;
+  left: 100px;
+  top: 680px;
+  padding: 10px;
+
+  .btn-outline-primary {
+    border-color: white;
+    color: white;
+    border-radius: 12px;
+    height: 4rem;
+
+    a {
+      color: white;
+      font-size: 1.5rem;
+      text-decoration: none;
+    }
+
+    &:focus {
+      background: #51beec;
+    }
   }
 }
