@@ -15,6 +15,7 @@ require 'action_cable/engine'
 require 'sprockets/railtie'
 
 Bundler.require(*Rails.groups)
+Bundler.require(:default, :assets, Rails.env)
 
 module AmazonCalc
   class Application < Rails::Application
