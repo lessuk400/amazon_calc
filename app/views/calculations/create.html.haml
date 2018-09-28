@@ -1,0 +1,47 @@
+.container
+  .row.center-block
+    .col-12
+      = render 'shared/header'
+
+
+      .calculation-output
+        .col-8.m-auto
+          .row
+            .col-6
+              %p.shift Amazon FBA fee:
+              .output-field
+                %p.text-center= "#{number_to_currency(@facade.fba_fee_per_unit, unit: '£')} per unit"
+            .col-6
+              %p.shift Amazon selling fee:
+              .output-field
+                %p.text-center= "#{number_to_currency(@facade.selling_fee_per_unit, unit: '£')} per unit"
+
+        .col-8.m-auto
+          .row.pt-3
+            .col-6
+              %p.shift Inbound shipping cost:
+              .output-field
+                %p.text-center= "#{number_to_currency(@facade.shipping_cost_per_unit, unit: '£')} per unit"
+            .col-6
+              %p.shift Import VAT & Duties cost:
+              .output-field
+                %p.text-center= "#{number_to_currency(@facade.vat_duty_cost_per_unit.round(2), unit: '£')} per unit"
+
+        .col-8.m-auto
+          .row.pt-3
+            .col-6.m-auto
+              %p.shift Assumed Amazon PPC cost:
+              .output-field
+                %p.text-center= "#{number_to_currency(@facade.ppc_cost_per_unit.round(2), unit: '£')} per unit"
+
+        .col-8.m-auto
+          .row.pt-3
+            .col-6.m-auto
+              %h3.shift Net cash profit:
+              .output-field.green
+                %p.text-center= "#{number_to_currency(@facade.ppc_cost_per_unit.round(2), unit: '£')} per unit"
+              .text-center
+                = link_to 'Check another product', market_path(1)
+
+  .cta-box
+    = render 'cta_box'

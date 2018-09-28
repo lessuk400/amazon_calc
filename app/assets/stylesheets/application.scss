@@ -1,1 +1,28 @@
 @import "bootstrap";
+@import 'markets/index';
+@import 'calculations/create';
+
+body {
+  background: #005272;
+  color: white;
+
+  * {
+    font-family: 'Roboto Regular';
+  }
+
+  h1.heading {
+    font-size: 5rem;
+  }
+
+  h3.heading {
+    font-size: 3rem;
+  }
+
+  h4.heading {
+    font-size: 2rem;
+  }
+
+  & .container {
+    margin-top: 75px;
+  }
+}
