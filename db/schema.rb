@@ -10,45 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_27_055011) do
+ActiveRecord::Schema.define(version: 2018_10_01_050554) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "categories", force: :cascade do |t|
     t.string "title"
-    t.integer "market_place_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["market_place_id"], name: "index_categories_on_market_place_id"
-  end
-
-  create_table "dimensions", force: :cascade do |t|
-    t.float "height"
-    t.float "width"
-    t.float "length"
-    t.string "name"
-    t.integer "market_place_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "packaging_weight"
-    t.index ["market_place_id"], name: "index_dimensions_on_market_place_id"
-  end
-
-  create_table "fees", force: :cascade do |t|
-    t.float "weight"
-    t.float "price"
-    t.integer "market_place_id"
-    t.integer "dimension_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["dimension_id"], name: "index_fees_on_dimension_id"
-    t.index ["market_place_id"], name: "index_fees_on_market_place_id"
   end
 
   create_table "market_places", force: :cascade do |t|
     t.string "name"
-    t.integer "market_id"
+    t.float "vat"
+    t.bigint "market_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.float "vat"
     t.index ["market_id"], name: "index_market_places_on_market_id"
   end
 
@@ -58,15 +36,41 @@ ActiveRecord::Schema.define(version: 2018_09_27_055011) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "referral_fees", force: :cascade do |t|
-    t.float "fee"
-    t.integer "market_place_id"
-    t.integer "category_id"
+  create_table "packages", force: :cascade do |t|
+    t.float "width"
+    t.float "height"
+    t.float "length"
+    t.float "packaging_weight"
+    t.integer "tier", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "referral_fees", force: :cascade do |t|
+    t.float "fee"
     t.float "min_fee"
+    t.bigint "market_place_id"
+    t.bigint "category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_referral_fees_on_category_id"
     t.index ["market_place_id"], name: "index_referral_fees_on_market_place_id"
   end
 
+  create_table "shipping_rates", force: :cascade do |t|
+    t.integer "weight"
+    t.float "fee"
+    t.bigint "package_id"
+    t.bigint "market_place_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["market_place_id"], name: "index_shipping_rates_on_market_place_id"
+    t.index ["package_id"], name: "index_shipping_rates_on_package_id"
+  end
+
+  add_foreign_key "market_places", "markets"
+  add_foreign_key "referral_fees", "categories"
+  add_foreign_key "referral_fees", "market_places"
+  add_foreign_key "shipping_rates", "market_places"
+  add_foreign_key "shipping_rates", "packages"
 end

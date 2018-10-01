@@ -18,13 +18,14 @@ module Calculations
     attr_reader :height, :length, :weight, :width
 
     def search_params
-      Array[weight, length, width, height]
+      Array[height, width, length, weight]
     end
 
     def appropriate_fba_fee
-      Fee.joins(:dimension)
-        .where('weight >= ? and (length >= ? and width >= ? and height >= ?)', *search_params)
-        .order(:price)
+      ShippingRate
+        .joins(:package)
+        .order('tier, fee')
+        .find_by('(height >= ? and width >= ? and length >= ?) and weight >= ?', *search_params)
     end
   end
 end

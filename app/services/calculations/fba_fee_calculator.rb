@@ -10,7 +10,7 @@ module Calculations
     end
 
     def call
-      fba_fee.first&.price
+      fba_fee&.fee
     end
 
     private
@@ -18,10 +18,10 @@ module Calculations
     attr_reader :height, :length, :weight, :width
 
     def fba_fee
-      Fee.appropriate_fba_fee(height: height,
-                              length: length,
-                              width:  width,
-                              weight: weight)
+      ShippingRate.appropriate_fba_fee(height: height,
+                                       length: length,
+                                       width:  width,
+                                       weight: weight)
     end
   end
 end
