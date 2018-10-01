@@ -26,4 +26,17 @@ body {
   & .container {
     margin-top: 75px;
   }
+
+  .logo {
+    top: 7px;
+    left: 24px;
+    position: relative;
+    width: 5rem;
+    height: 6.1rem;
+  }
+
+  .box-shadow {
+    border-radius: 2px;
+    box-shadow: 0 4px 6px rgba(3, 66, 90, 0.56), 0 1px 3px rgba(0, 0, 0, 0.08);
+  }
 }

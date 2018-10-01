@@ -3,90 +3,92 @@
     .col-12
       = render 'shared/header'
 
-      %h4.text-center How high are your returns?
+      %h4.text-center= t('views.market.show.header')
 
       = simple_form_for :info, url: calculations_path, method: :post do |f|
         .calculation-input
           .col-8.m-auto
-            %p Product`s retail packaging:
+            %p= t('views.market.show.packaging')
             .row
               .col-3
                 = f.input :height, as:          :decimal,
                                    label:       false,
-                                   placeholder: 'Height',
-                                   input_html:  { required: true, class: 'form-control input-field' }
+                                   placeholder: t('activerecord.attributes.calculation.input_form.dimensions.height'),
+                                   input_html:  { required: true, class: 'form-control input-field box-shadow' }
               .col-3
                 = f.input :width, as:          :decimal,
                                   label:       false,
-                                  placeholder: 'Width',
-                                  input_html:  { class: 'form-control input-field' }
+                                  placeholder: t('activerecord.attributes.calculation.input_form.dimensions.width'),
+                                  input_html:  { class: 'form-control input-field box-shadow' }
               .col-3
                 = f.input :length, as:          :decimal,
                                    label:       false,
-                                   placeholder: 'Length',
-                                   input_html:  { class: 'form-control input-field' }
+                                   placeholder: t('activerecord.attributes.calculation.input_form.dimensions.length'),
+                                   input_html:  { class: 'form-control input-field box-shadow' }
               .col-3
                 = f.input :weight, as:          :decimal,
                                    label:       false,
-                                   placeholder: 'Weight',
-                                   input_html:  { class: 'form-control input-field' }
+                                   placeholder: t('activerecord.attributes.calculation.input_form.dimensions.weight'),
+                                   input_html:  { class: 'form-control input-field box-shadow' }
 
           .col-8.m-auto
             .row.mt-3
               .col-6
                 = f.input :shipment_size, as:          :integer,
                                           label:       false,
-                                          placeholder: 'Shipment size (# of units)',
-                                          input_html:  { class: 'form-control input-field' }
+                                          placeholder: t('activerecord.attributes.calculation.input_form.shipment.shipment_size'),
+                                          input_html:  { class: 'form-control input-field box-shadow' }
               .col-6
                 = f.input :marketplace_id, as:          :select,
                                            collection:  @facade.marketplace_list,
                                            label:       false,
-                                           prompt:      'Choose your Marketplace',
-                                           input_html:  { class: 'form-control input-field' }
+                                           prompt:      t('activerecord.attributes.calculation.input_form.marketplace'),
+                                           input_html:  { class: 'form-control input-field box-shadow' }
 
             .row.mt-3
               .col-6
                 = f.input :vat_duty_cost, as:          :decimal,
                                           label:       false,
-                                          placeholder: 'Total Duties & VAT',
-                                          input_html:  { class: 'form-control input-field' }
+                                          placeholder: t('activerecord.attributes.calculation.input_form.duties_and_vat'),
+                                          input_html:  { class: 'form-control input-field box-shadow' }
               .col-6
                 = f.input :shipping_costs, as:          :decimal,
                                            label:       false,
-                                           placeholder: 'Total inbound shipping costs',
-                                           input_html:  { class: 'form-control input-field' }
+                                           placeholder: t('activerecord.attributes.calculation.input_form.shipment.shipping_cost'),
+                                           input_html:  { class: 'form-control input-field box-shadow' }
 
             .row.mt-3
               .col-6
                 = f.input :purchasing_price, as:          :decimal,
                                              label:       false,
-                                             placeholder: 'Purchasing price per unit',
-                                             input_html:  { class: 'form-control input-field' }
+                                             placeholder: t('activerecord.attributes.calculation.input_form.purchasing_price'),
+                                             input_html:  { class: 'form-control input-field box-shadow' }
               .col-6
                 = f.input :sales_price, as:          :decimal,
                                         label:       false,
-                                        placeholder: 'Sales price per unit',
-                                        input_html:  { class: 'form-control input-field' }
+                                        placeholder: t('activerecord.attributes.calculation.input_form.sales_price'),
+                                        input_html:  { class: 'form-control input-field box-shadow' }
 
             .row.mt-3
               .col-6
-                = f.input :advertising_spend, label: false, placeholder: 'Advertising spend (%)', input_html: { class: 'form-control input-field' }
+                = f.input :advertising_spend, label: false,
+                                              placeholder: t('activerecord.attributes.calculation.input_form.advertising'),
+                                              input_html: { class: 'form-control input-field box-shadow' }
               .col-6
                 = f.input :category_id, as:          :select,
                                         collection:  @facade.category_list,
                                         label:       false,
-                                        prompt:      'Category',
-                                        input_html:  { class: 'form-control input-field' }
+                                        prompt:      t('activerecord.attributes.calculation.input_form.category'),
+                                        input_html:  { class: 'form-control input-field box-shadow' }
 
             .row.mt-3
               .col-6.m-auto
                 = f.input :email, as:          :email,
                                   label:       false,
-                                  placeholder: 'Email',
-                                  input_html:  { class: 'form-control input-field' }
+                                  placeholder: t('activerecord.attributes.calculation.input_form.email'),
+                                  input_html:  { class: 'form-control input-field box-shadow' }
 
           .col-8.m-auto
             .row.mt-5.justify-content-center
               .col-6
-                = f.button :submit, 'Calculate Your Roi', class: 'form-control submit-button'
+                = f.button :submit, t('activerecord.attributes.calculation.input_form.calculate'), class: 'form-control submit-button box-shadow'

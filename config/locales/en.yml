@@ -1,33 +1,58 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   'true': 'foo'
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  app_name: Amazon Calculator
+
+  views:
+    shared:
+      header:
+        name:           Bitbond
+        cash_on_cash:   Calculate the true profitability of your private labelled products on Amazon
+        roi_calculator: Amazon ROI calculator
+
+    market:
+      show:
+        header:    How high are your returns?
+        packaging: "Product's retail packaging dimensions:"
+
+    cta_box:
+      header:     Want to finance the order?
+      speciality: Bitbond specialises in loans for Amazon sellers.
+      rates:      Check your rates
+
+  currency:
+    dollar: $
+    pound:  £
+
+  activerecord:
+    attributes:
+      calculation:
+        input_form:
+          duties_and_vat:   Total Duties & VAT
+          purchasing_price: Purchasing price per unit
+          sales_price:      Sales price per unit
+          advertising:      AMZ PPC spend (% of gross sales)
+          email:            Email
+          marketplace:      Choose your Marketplace
+          category:         Category
+          calculate:        Calculate Your Roi
+
+          shipment:
+            shipment_size: Shipment size (# of units)
+            shipping_cost: Total inbound shipping costs
+
+          dimensions:
+            height: Height
+            width:  Width
+            length: Length
+            weight: Weight
+
+        output_form:
+          total_net_profit:      'The total net profit for the shipment:'
+          net_cash_profit:       'Net Cash profit:'
+          per_unit:              ' per unit'
+          fba_fee:               'Amazon FBA fee:'
+          amazon_selling_fee:    'Amazon selling fee:'
+          inbound_shipping_cost: 'Inbound shipping cost:'
+          vat_and_duties:        'Import VAT & Duties cost:'
+          amazon_ppc_cost:       'Assumed Amazon PPC cost:'
+          check_another_product: Check another product
+

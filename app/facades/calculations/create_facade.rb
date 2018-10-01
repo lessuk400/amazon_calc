@@ -28,6 +28,10 @@ module Calculations
       @ppc_cost_per_unit = PpcCostCalculator.call(params: ppc_params)
     end
 
+    def total_net_cash_profit
+      ppc_cost_per_unit * info[:shipment_size].to_i
+    end
+
     private
 
     attr_reader :info
