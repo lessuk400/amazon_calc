@@ -16,6 +16,9 @@ gem 'bootsnap',   '>= 1.1.0', require: false
 gem 'bootstrap',  '~> 4.1.3'
 gem 'jquery-rails'
 gem 'simple_form'
+gem 'maskmoney-rails'
+gem 'countries'
+gem 'money'
 
 group :development, :test do
   gem 'pry-rails'
