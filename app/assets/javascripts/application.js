@@ -4,8 +4,6 @@
 //= require jquery3
 //= require popper
 //= require bootstrap-sprockets
+//= require input-mask
 //= require_tree
 
-document.addEventListener('turbolinks:load', () => {
-
-});

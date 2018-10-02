@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_01_050554) do
+ActiveRecord::Schema.define(version: 2018_10_01_184912) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 2018_10_01_050554) do
     t.bigint "market_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "alpha3"
     t.index ["market_id"], name: "index_market_places_on_market_id"
   end
 

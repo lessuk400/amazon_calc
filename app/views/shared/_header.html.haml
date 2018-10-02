@@ -1,5 +1,6 @@
 .header
   %h1.text-center.heading
-    %strong Bitbond
-  %h4.text-center.heading Calculate your cash on cash return on Amazon
-  %h3.text-center.heading Amazon ROI calculator
+    = image_tag 'logo.svg', class: 'logo'
+    %strong= t('views.shared.header.name')
+  %h4.text-center.heading= t('views.shared.header.cash_on_cash')
+  %h3.text-center.heading= t('views.shared.header.roi_calculator')

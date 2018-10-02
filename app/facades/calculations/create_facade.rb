@@ -28,9 +28,25 @@ module Calculations
       @ppc_cost_per_unit = PpcCostCalculator.call(params: ppc_params)
     end
 
+    def total_net_cash_profit
+      ppc_cost_per_unit * info[:shipment_size].to_i
+    end
+
+    def currency_symbol
+      current_currency_symbol
+    end
+
     private
 
     attr_reader :info
+
+    def current_currency_symbol
+      current_marketplace.currency.symbol
+    end
+
+    def current_marketplace
+      ISO3166::Country.find_country_by_alpha3(MarketPlace.find(info[:marketplace_id]).alpha3)
+    end
 
     def gbp_convert(value)
       value.to_f / GBP_USD
@@ -56,8 +72,6 @@ module Calculations
         weight: info[:weight]
       }
     end
-
-    # Ask about currency of input fields
 
     def selling_fee_params
       {

@@ -1,7 +1,7 @@
 .container
   .row.center-block
     .col-12
-      %h1.text-center Bitbond
+      %h1.text-center= t('views.header.name')
 
       - Market.all.each do |market|
         = link_to market.name, market_path(market), class: 'btn btn-primary'
