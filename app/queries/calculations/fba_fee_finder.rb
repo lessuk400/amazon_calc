@@ -2,11 +2,12 @@
 
 module Calculations
   class FbaFeeFinder < Callable
-    def initialize(height:, length:, width:, weight:)
-      @height = height
-      @length = length
-      @width  = width
-      @weight = weight
+    def initialize(params:)
+      @height         = params[:height]
+      @length         = params[:length]
+      @width          = params[:width]
+      @weight         = params[:weight]
+      @marketplace_id = params[:marketplace_id]
     end
 
     def call
@@ -15,7 +16,7 @@ module Calculations
 
     private
 
-    attr_reader :height, :length, :weight, :width
+    attr_reader :height, :length, :weight, :width, :marketplace_id
 
     def search_params
       Array[height, width, length, weight]
@@ -23,6 +24,7 @@ module Calculations
 
     def appropriate_fba_fee
       ShippingRate
+        .where(market_place: marketplace_id)
         .joins(:package)
         .order('tier, fee')
         .find_by('(height >= ? and width >= ? and length >= ?) and weight >= ?', *search_params)

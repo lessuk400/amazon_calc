@@ -83,6 +83,6 @@ ReferralFee.create(fee: 0.15, min_fee: 0.40, market_place_id: 1, category_id: 2)
 ReferralFee.create(fee: 0.12, min_fee: 0.40, market_place_id: 1, category_id: 3)
 
 # DE
-ReferralFee.create(fee: 0.15, min_fee: 0.50, market_place_id: 1, category_id: 1)
-ReferralFee.create(fee: 0.15, min_fee: 0.50, market_place_id: 1, category_id: 2)
-ReferralFee.create(fee: 0.12, min_fee: 0.40, market_place_id: 1, category_id: 3)
+ReferralFee.create(fee: 0.15, min_fee: 0.50, market_place_id: 2, category_id: 1)
+ReferralFee.create(fee: 0.15, min_fee: 0.50, market_place_id: 2, category_id: 2)
+ReferralFee.create(fee: 0.12, min_fee: 0.40, market_place_id: 2, category_id: 3)
