@@ -2,14 +2,14 @@
 
 module Calculations
   class CreateFacade
-    GBP_USD = 1.28
+    GBP_USD = 1
 
     def initialize(info:)
       @info = info
     end
 
     def fba_fee_per_unit
-      @fba_fee_per_unit ||= FbaFeeCalculator.call(fba_fee_params)
+      @fba_fee_per_unit ||= FbaFeeCalculator.call(params: fba_fee_params)
     end
 
     def selling_fee_per_unit
@@ -48,35 +48,43 @@ module Calculations
       ISO3166::Country.find_country_by_alpha3(MarketPlace.find(info[:marketplace_id]).alpha3)
     end
 
-    def gbp_convert(value)
-      value.to_f / GBP_USD
+    def ppc_params
+      ppc_monetary_params.merge(ppc_shipping_params)
     end
 
-    def ppc_params
+    def ppc_monetary_params
       {
-        purchasing_price:     gbp_convert(info[:purchasing_price]),
-        sales_price:          info[:sales_price],
-        shipping_costs:       info[:shipping_costs],
-        vat_duty_cost:        info[:vat_duty_cost],
-        shipment_size:        info[:shipment_size],
+        marketplace_id:       info[:marketplace_id],
         selling_fee_per_unit: selling_fee_per_unit,
-        fba_fee_per_unit:     fba_fee_per_unit
+        fba_fee_per_unit:     fba_fee_per_unit,
+        purchasing_price:     info[:purchasing_price].to_f,
+        sales_price:          info[:sales_price].to_f
+      }
+    end
+
+    def ppc_shipping_params
+      {
+        shipping_costs: info[:shipping_costs].to_f,
+        vat_duty_cost:  info[:vat_duty_cost].to_f,
+        shipment_size:  info[:shipment_size].to_i
       }
     end
 
     def fba_fee_params
       {
-        height: info[:height],
-        length: info[:length],
-        width:  info[:width],
-        weight: info[:weight]
+        height:         info[:height],
+        length:         info[:length],
+        width:          info[:width],
+        weight:         info[:weight],
+        marketplace_id: info[:marketplace_id]
       }
     end
 
     def selling_fee_params
       {
-        category_id: info[:category_id],
-        sales_price: info[:sales_price]
+        category_id:    info[:category_id],
+        sales_price:    info[:sales_price],
+        marketplace_id: info[:marketplace_id]
       }
     end
 
