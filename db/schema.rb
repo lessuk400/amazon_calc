@@ -10,10 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_01_184912) do
+ActiveRecord::Schema.define(version: 2018_10_08_143743) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "calculations", force: :cascade do |t|
+    t.string "email"
+    t.string "currency"
+    t.float "selling_fee_per_unit"
+    t.float "shipping_cost_per_unit"
+    t.float "vat_duty_cost_per_unit"
+    t.float "ppc_cost_per_unit"
+    t.float "total_net_cash_profit"
+    t.float "fba_fee_per_unit"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "categories", force: :cascade do |t|
     t.string "title"
@@ -67,6 +80,17 @@ ActiveRecord::Schema.define(version: 2018_10_01_184912) do
     t.datetime "updated_at", null: false
     t.index ["market_place_id"], name: "index_shipping_rates_on_market_place_id"
     t.index ["package_id"], name: "index_shipping_rates_on_package_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "email", null: false
+    t.string "encrypted_password", limit: 128, null: false
+    t.string "confirmation_token", limit: 128
+    t.string "remember_token", limit: 128, null: false
+    t.index ["email"], name: "index_users_on_email"
+    t.index ["remember_token"], name: "index_users_on_remember_token"
   end
 
   add_foreign_key "market_places", "markets"

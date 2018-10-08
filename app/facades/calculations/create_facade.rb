@@ -1,11 +1,34 @@
 # frozen_string_literal: true
 
 module Calculations
-  class CreateFacade
+  class CreateFacade < Callable
     GBP_USD = 1
+
+    delegate :valid?, to: :subject, prefix: true
 
     def initialize(info:)
       @info = info
+    end
+
+    def subject
+      @subject ||= Calculation.create(create_params)
+    end
+
+    private
+
+    attr_reader :info
+
+    def create_params
+      {
+        email:                  info[:email],
+        fba_fee_per_unit:       fba_fee_per_unit,
+        selling_fee_per_unit:   selling_fee_per_unit,
+        shipping_cost_per_unit: shipping_cost_per_unit,
+        vat_duty_cost_per_unit: vat_duty_cost_per_unit,
+        ppc_cost_per_unit:      ppc_cost_per_unit,
+        total_net_cash_profit:  total_net_cash_profit,
+        currency:               currency_symbol
+      }
     end
 
     def fba_fee_per_unit
@@ -35,10 +58,6 @@ module Calculations
     def currency_symbol
       current_currency_symbol
     end
-
-    private
-
-    attr_reader :info
 
     def current_currency_symbol
       current_marketplace.currency.symbol
