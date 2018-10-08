@@ -1,0 +1,12 @@
+.container
+  .login-form
+    .main-div
+      .panel
+        %h2 Admin Login
+        %p Please enter your email and password
+      = form_for :session, url: session_path, id: 'login' do |form|
+        .form-group
+          = form.text_field :email, type: 'email', class: 'form-control', id: 'inputEmail', placeholder: 'Email Address'
+        .form-group
+          = form.password_field :password, class: 'form-control', id: 'inputPassword', placeholder: 'Password'
+        = form.submit 'Login', class: 'btn btn-primary'

@@ -19,6 +19,8 @@ gem 'simple_form'
 gem 'maskmoney-rails'
 gem 'countries'
 gem 'money'
+gem 'administrate'
+gem 'clearance'
 
 group :development, :test do
   gem 'pry-rails'
