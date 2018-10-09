@@ -16,5 +16,7 @@ Rails.application.routes.draw do
 
   resources :markets, only: %i[index show]
 
-  resources :calculations, only: %i[show create]
+  resources :calculations, only: %i[create]
+
+  resource :calculation_results, only: :show
 end

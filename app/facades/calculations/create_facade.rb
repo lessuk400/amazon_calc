@@ -4,14 +4,18 @@ module Calculations
   class CreateFacade < Callable
     GBP_USD = 1
 
-    delegate :valid?, to: :subject, prefix: true
+    delegate :valid?, to: :result, prefix: true
 
     def initialize(info:)
       @info = info
     end
 
-    def subject
-      @subject ||= Calculation.create(create_params)
+    def result
+      @result ||= Calculation.create(create_params)
+    end
+
+    def result_params
+      { result_id: result.id }
     end
 
     private
