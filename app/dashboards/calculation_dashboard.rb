@@ -12,7 +12,7 @@ class CalculationDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     id:                     Field::Number,
     email:                  Field::String,
-    currency:               Field::String,
+    marketplace:            Field::String,
     selling_fee_per_unit:   Field::Number.with_options(decimals: 2),
     shipping_cost_per_unit: Field::Number.with_options(decimals: 2),
     vat_duty_cost_per_unit: Field::Number.with_options(decimals: 2),
@@ -31,7 +31,7 @@ class CalculationDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = %i[
     id
     email
-    currency
+    marketplace
     selling_fee_per_unit
     shipping_cost_per_unit
     vat_duty_cost_per_unit
@@ -45,7 +45,7 @@ class CalculationDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = %i[
     id
     email
-    currency
+    marketplace
     selling_fee_per_unit
     shipping_cost_per_unit
     vat_duty_cost_per_unit
@@ -61,7 +61,7 @@ class CalculationDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
     email
-    currency
+    marketplace
     selling_fee_per_unit
     shipping_cost_per_unit
     vat_duty_cost_per_unit

@@ -31,7 +31,7 @@ module Calculations
         vat_duty_cost_per_unit: vat_duty_cost_per_unit,
         ppc_cost_per_unit:      ppc_cost_per_unit,
         total_net_cash_profit:  total_net_cash_profit,
-        currency:               currency_symbol
+        marketplace:            current_marketplace
       }
     end
 
@@ -59,16 +59,8 @@ module Calculations
       ppc_cost_per_unit * info[:shipment_size].to_i
     end
 
-    def currency_symbol
-      current_currency_symbol
-    end
-
-    def current_currency_symbol
-      current_marketplace.currency.symbol
-    end
-
     def current_marketplace
-      ISO3166::Country.find_country_by_alpha3(MarketPlace.find(info[:marketplace_id]).alpha3)
+      ISO3166::Country.find_country_by_alpha3(MarketPlace.find(info[:marketplace_id]).alpha3).gec
     end
 
     def ppc_params
