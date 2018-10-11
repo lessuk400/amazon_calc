@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 2018_10_08_143743) do
 
   create_table "calculations", force: :cascade do |t|
     t.string "email"
-    t.string "currency"
+    t.string "marketplace"
     t.float "selling_fee_per_unit"
     t.float "shipping_cost_per_unit"
     t.float "vat_duty_cost_per_unit"

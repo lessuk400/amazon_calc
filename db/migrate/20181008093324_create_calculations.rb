@@ -2,7 +2,7 @@ class CreateCalculations < ActiveRecord::Migration[5.2]
   def change
     create_table :calculations do |t|
       t.string :email
-      t.string :currency
+      t.string :marketplace
 
       t.float :selling_fee_per_unit
       t.float :shipping_cost_per_unit

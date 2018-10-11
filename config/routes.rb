@@ -12,9 +12,14 @@ Rails.application.routes.draw do
 
     root to: 'markets#index'
   end
+
   root 'markets#index'
 
   resources :markets, only: %i[index show]
 
-  resources :calculations, only: %i[show create]
+  resource :calculations, only: :create do
+    resource :results, only: :show
+  end
+
+  resources :reports, only: :index
 end
