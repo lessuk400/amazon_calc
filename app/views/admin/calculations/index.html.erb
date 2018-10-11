@@ -7,7 +7,7 @@
     <%= content_for(:title) %>
   </h1>
 
-  <%= link_to 'Export to CSV', calculations_path(format: :csv), class: 'button' %>
+  <%= link_to 'Export to CSV', reports_path(format: :csv), class: 'button' %>
 
   <% if show_search_bar %>
     <%= render(
@@ -18,25 +18,27 @@
   <% end %>
 
   <div>
-    <%= link_to(
-      t(
-        "administrate.actions.new_resource",
-        name: page.resource_name.titleize.downcase
-      ),
-      [:new, namespace, page.resource_path],
-      class: "button",
-    ) if valid_action?(:new) && show_action?(:new, new_resource) %>
+    <% if valid_action?(:new) && show_action?(:new, new_resource) %>
+      <%= link_to(
+        t(
+          "administrate.actions.new_resource",
+          name: page.resource_name.titleize.downcase
+        ),
+        [:new, namespace, page.resource_path],
+        class: "button",
+      )%>
+    <% end %>
   </div>
 </header>
 
 <section class="main-content__body main-content__body--flush">
   <%= render(
     "collection",
-    collection_presenter: page,
+    collection_presenter:  page,
     collection_field_name: resource_name,
-    page: page,
-    resources: resources,
-    table_title: "page-title"
+    page:                  page,
+    resources:             resources,
+    table_title:           "page-title"
   ) %>
 
   <%= paginate resources %>

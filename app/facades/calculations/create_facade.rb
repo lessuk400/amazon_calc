@@ -4,7 +4,9 @@ module Calculations
   class CreateFacade < Callable
     GBP_USD = 1
 
-    delegate :valid?, to: :result, prefix: true
+    delegate :valid?, to: :result,              prefix: true
+    delegate :gec,    to: :current_marketplace, prefix: true
+    delegate :alpha3, to: :marketplace,         prefix: true
 
     def initialize(info:)
       @info = info
@@ -31,7 +33,7 @@ module Calculations
         vat_duty_cost_per_unit: vat_duty_cost_per_unit,
         ppc_cost_per_unit:      ppc_cost_per_unit,
         total_net_cash_profit:  total_net_cash_profit,
-        marketplace:            current_marketplace
+        marketplace:            current_marketplace_gec
       }
     end
 
@@ -60,7 +62,11 @@ module Calculations
     end
 
     def current_marketplace
-      ISO3166::Country.find_country_by_alpha3(MarketPlace.find(info[:marketplace_id]).alpha3).gec
+      ISO3166::Country.find_country_by_alpha3(marketplace_alpha3)
+    end
+
+    def marketplace
+      MarketPlace.find_by(id: info[:marketplace_id])
     end
 
     def ppc_params
