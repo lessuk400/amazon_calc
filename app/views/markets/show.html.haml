@@ -5,6 +5,9 @@
 
       %h4.text-center.my-4= t('views.market.show.header')
 
+      .col-8.m-auto
+        = render 'layouts/flash'
+
       = simple_form_for :info, url: calculations_path, method: :post, html: { id: 'calculation-form' } do |f|
         .calculation-input
           .col-8.m-auto

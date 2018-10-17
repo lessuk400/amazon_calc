@@ -11,7 +11,11 @@ module Calculations
     end
 
     def call
-      appropriate_fba_fee
+      ShippingRate
+        .where(market_place_id: marketplace_id)
+        .joins(:package)
+        .order('tier, fee')
+        .find_by('weight >= ? and (height >= ? and width >= ? and length >= ?)', *search_params)
     end
 
     private
@@ -19,15 +23,7 @@ module Calculations
     attr_reader :height, :length, :weight, :width, :marketplace_id
 
     def search_params
-      Array[height, width, length, weight]
-    end
-
-    def appropriate_fba_fee
-      ShippingRate
-        .where(market_place: marketplace_id)
-        .joins(:package)
-        .order('tier, fee')
-        .find_by('(height >= ? and width >= ? and length >= ?) and weight >= ?', *search_params)
+      Array[weight, height, width, length]
     end
   end
 end
