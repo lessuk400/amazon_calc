@@ -9,10 +9,13 @@ module Results
     delegate :currency, to: :country, allow_nil: true
 
     delegate :symbol, to: :currency, prefix: true, allow_nil: true
-    delegate :nil?,   to: :finder,   prefix: true, allow_nil: true
 
     def initialize(token:)
       @token = token
+    end
+
+    def finder
+      @finder ||= Calculation.find_by('token = ? and expired_at > ?', token, Time.now)
     end
 
     private
@@ -21,10 +24,6 @@ module Results
 
     def country
       @country ||= ISO3166::Country.find_country_by_gec(marketplace)
-    end
-
-    def finder
-      @finder ||= Calculation.find_by('token = ? and expired_at > ?', token, Time.now)
     end
   end
 end

@@ -20,7 +20,7 @@ module Calculations
 
     def expiration_date
       {
-        expired_at: Time.now + 10.minute
+        expired_at: 10.minutes.from_now
       }
     end
   end
