@@ -1,0 +1,101 @@
+.container
+  .row.center-block
+    .col-12
+      = render 'shared/header'
+
+      %h4.text-center.my-4= t('views.market.show.header')
+
+      .col-8.m-auto
+        = render 'layouts/flash'
+
+      = simple_form_for :info, url: calculations_path, method: :post, html: { id: 'calculation-form' } do |f|
+        .calculation-input
+          .col-8.m-auto
+            %p= t('views.market.show.packaging')
+            .row
+              .col-3
+                = f.input :height, label:       false,
+                                   placeholder: t('activerecord.attributes.calculation.input_form.dimensions.height'),
+                                   required:    true,
+                                   input_html:  { class: 'form-control input-field box-shadow js-mask js-dimension' }
+              .col-3
+                = f.input :width, label:       false,
+                                  placeholder: t('activerecord.attributes.calculation.input_form.dimensions.width'),
+                                  required:    true,
+                                  input_html:  { class: 'form-control input-field box-shadow js-mask js-dimension' }
+              .col-3
+                = f.input :length, label:       false,
+                                   placeholder: t('activerecord.attributes.calculation.input_form.dimensions.length'),
+                                   required:    true,
+                                   input_html:  { class: 'form-control input-field box-shadow js-mask js-dimension' }
+              .col-3
+                = f.input :weight, label:       false,
+                                   placeholder: t('activerecord.attributes.calculation.input_form.dimensions.weight'),
+                                   required:    true,
+                                   input_html:  { class: 'form-control input-field box-shadow js-mask js-weight' }
+
+          .col-8.m-auto
+            .row.mt-3
+              .col-6
+                = f.input :shipment_size, label:       false,
+                                          placeholder: t('activerecord.attributes.calculation.input_form.shipment.shipment_size'),
+                                          required:    true,
+                                          input_html:  { class: 'form-control input-field box-shadow' }
+              .col-6
+                = f.input :marketplace_id, as:          :select,
+                                           collection:  marketplace_with_currency(@facade.marketplace_list),
+                                           label:       false,
+                                           prompt:      t('activerecord.attributes.calculation.input_form.marketplace'),
+                                           required:    true,
+                                           input_html:  { class: 'form-control input-field box-shadow js-currency' }
+
+            .row.mt-3
+              .col-6
+                = f.input :vat_duty_cost, label:       false,
+                                          placeholder: t('activerecord.attributes.calculation.input_form.duties_and_vat'),
+                                          required:    true,
+                                          input_html:  { class: 'form-control input-field box-shadow js-mask js-thousand' }
+              .col-6
+                = f.input :shipping_costs, label:       false,
+                                           placeholder: t('activerecord.attributes.calculation.input_form.shipment.shipping_cost'),
+                                           required:    true,
+                                           input_html:  { class: 'form-control input-field box-shadow js-mask js-thousand' }
+
+            .row.mt-3
+              .col-6
+                = f.input :purchasing_price, label:       false,
+                                             placeholder: t('activerecord.attributes.calculation.input_form.purchasing_price'),
+                                             required:    true,
+                                             input_html:  { class: 'form-control input-field box-shadow js-mask js-decimal' }
+              .col-6
+                = f.input :sales_price, label:       false,
+                                        placeholder: t('activerecord.attributes.calculation.input_form.sales_price'),
+                                        required:    true,
+                                        input_html:  { class: 'form-control input-field box-shadow js-mask js-decimal' }
+
+            .row.mt-3
+              .col-6
+                = f.input :advertising_spend, label: false,
+                                              placeholder: t('activerecord.attributes.calculation.input_form.advertising'),
+                                              required:    true,
+                                              input_html: { class: 'form-control input-field box-shadow js-mask js-percentage' }
+              .col-6
+                = f.input :category_id, as:          :select,
+                                        collection:  @facade.category_list,
+                                        label:       false,
+                                        prompt:      t('activerecord.attributes.calculation.input_form.category'),
+                                        required:    true,
+                                        input_html:  { class: 'form-control input-field box-shadow' }
+
+            .row.mt-3
+              .col-6.m-auto
+                = f.input :email, as:          :email,
+                                  label:       false,
+                                  required:    true,
+                                  placeholder: t('activerecord.attributes.calculation.input_form.email'),
+                                  input_html:  { class: 'form-control input-field box-shadow' }
+
+          .col-8.m-auto
+            .row.mt-5.justify-content-center
+              .col-6
+                = f.button :submit, t('activerecord.attributes.calculation.input_form.calculate'), class: 'form-control submit-button box-shadow'

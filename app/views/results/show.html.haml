@@ -1,0 +1,52 @@
+.container
+  .row.center-block
+    .col-12
+      = render 'shared/header'
+
+      .calculation-output
+        .col-8.m-auto
+          .row
+            .col-6
+              %p.shift= t('activerecord.attributes.calculation.output_form.fba_fee')
+              .output-field.box-shadow
+                %p.text-center= price_per_unit(@facade.fba_fee_per_unit, @facade.currency_symbol)
+            .col-6
+              %p.shift= t('activerecord.attributes.calculation.output_form.amazon_selling_fee')
+              .output-field.box-shadow
+                %p.text-center= price_per_unit(@facade.selling_fee_per_unit, @facade.currency_symbol)
+
+        .col-8.m-auto
+          .row.pt-3
+            .col-6
+              %p.shift= t('activerecord.attributes.calculation.output_form.inbound_shipping_cost')
+              .output-field.box-shadow
+                %p.text-center= price_per_unit(@facade.shipping_cost_per_unit, @facade.currency_symbol)
+            .col-6
+              %p.shift= t('activerecord.attributes.calculation.output_form.vat_and_duties')
+              .output-field.box-shadow
+                %p.text-center= price_per_unit(@facade.vat_duty_cost_per_unit, @facade.currency_symbol)
+
+        .col-8.m-auto
+          .row.pt-3
+            .col-6.m-auto
+              %p.shift= t('activerecord.attributes.calculation.output_form.amazon_ppc_cost')
+              .output-field.box-shadow
+                %p.text-center= price_per_unit(@facade.ppc_cost_per_unit, @facade.currency_symbol)
+
+        .col-8.m-auto
+          .row.pt-3
+            .col-6.m-auto
+              %h3.shift= t('activerecord.attributes.calculation.output_form.net_cash_profit')
+              .output-field.green.box-shadow
+                %p.text-center= price_per_unit(@facade.ppc_cost_per_unit, @facade.currency_symbol)
+
+          .row.pt-3
+            .col-6.m-auto
+              %h3.shift= t('activerecord.attributes.calculation.output_form.total_net_profit')
+              .output-field.green.box-shadow
+                %p.text-center= total_price(@facade.total_net_cash_profit, @facade.currency_symbol)
+              .text-center
+                = link_to t('activerecord.attributes.calculation.output_form.check_another_product'), market_path(1)
+
+  .cta-box.fixed-bottom
+    = render 'cta_box'

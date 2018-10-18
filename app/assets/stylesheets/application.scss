@@ -1,1 +1,47 @@
 @import "bootstrap";
+@import 'markets/index';
+@import 'calculations/create';
+@import 'fonts';
+@import 'admin_panel/login';
+
+body {
+  background: #005272;
+  color: white;
+
+  * {
+    font-family: 'Roboto Regular';
+  }
+
+  h1.heading {
+    font-size: 5rem;
+  }
+
+  h3.heading {
+    font-size: 3rem;
+  }
+
+  h4.heading {
+    font-size: 2rem;
+  }
+
+  & .container {
+    margin-top: 75px;
+  }
+
+  .logo {
+    top: 7px;
+    left: 24px;
+    position: relative;
+    width: 5rem;
+    height: 6.1rem;
+  }
+
+  .box-shadow {
+    border-radius: 2px;
+    box-shadow: 0 4px 6px rgba(3, 66, 90, 0.56), 0 1px 3px rgba(0, 0, 0, 0.08);
+  }
+
+  .submit-button {
+    margin-bottom: 100px;
+  }
+}

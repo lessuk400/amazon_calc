@@ -1,0 +1,73 @@
+.calculation-input {
+  .input-field {
+    background-color: #0d4a66;
+
+    &:focus {
+      background: #18546f;
+    }
+  }
+
+  ::-webkit-input-placeholder {
+    text-align: center;
+    color: #a1bcc6;
+    white-space: pre-line;
+  }
+
+  select {
+    text-align: center;
+    text-align-last: center;
+  }
+
+  .form-control {
+    border: 0;
+    border-radius: 0;
+    font-size: 1.2rem;
+    padding: 15px 15px;
+
+    &:focus {
+      border-color: rgba(186,195,195,0.55);
+      box-shadow:  0 0 8px rgba(186,195,195,0.25);
+    }
+  }
+
+  .row input, select {
+    color: #a1bcc6;
+    white-space: pre-line;
+    text-align: center;
+  }
+
+  .row .col-3 input {
+    height: 2.5rem;
+  }
+
+  .row .col-6 input {
+    height: 4.5rem;
+  }
+
+  .row .col-6 select {
+    height: 4.5rem;
+  }
+
+  .submit-button {
+    border-radius: 12px;
+    background: #005272;
+    border: solid 2px white;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+
+  select {
+    &:focus {
+      color: #a1bcc6;
+    }
+
+    option {
+      color: white;
+    }
+  }
+}
+
+h3 {
+  font-weight: bold;
+}

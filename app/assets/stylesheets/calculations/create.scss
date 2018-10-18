@@ -1,0 +1,48 @@
+.calculation-output {
+  .output-field {
+    margin: 0 20px 20px 50px;
+    background: #4e7586;
+    padding: 10px;
+  }
+
+  .green {
+    background: #2ca234;
+  }
+
+  .shift {
+    margin-left: 50px;
+  }
+
+  p {
+    margin-bottom: 0;
+    padding-bottom: 0.5rem;
+    padding-top: 0.5rem;
+    font-size: 1.5rem;
+  }
+}
+
+.cta-box {
+  background: #51beec;
+  border: solid 8px white;
+  width: 400px;
+  left: 100px;
+  top: 680px;
+  padding: 10px;
+
+  .btn-outline-primary {
+    border-color: white;
+    color: white;
+    border-radius: 12px;
+    height: 4rem;
+
+    a {
+      color: white;
+      font-size: 1.5rem;
+      text-decoration: none;
+    }
+
+    &:focus {
+      background: #51beec;
+    }
+  }
+}
