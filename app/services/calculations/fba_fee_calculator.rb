@@ -19,7 +19,7 @@ module Calculations
     attr_reader :height, :length, :weight, :width, :marketplace_id
 
     def fba_fee
-      ShippingRate.appropriate_fba_fee(params: query_params)
+      FbaFeeFinder.call(params: query_params)
     end
 
     def query_params

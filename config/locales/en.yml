@@ -18,6 +18,10 @@ en:
       speciality: Bitbond specialises in loans for Amazon sellers.
       rates:      Check your rates
 
+    results:
+      errors:
+        dimension_weight_error: Please, check dimensions and weight
+
   activerecord:
     attributes:
       calculation:
