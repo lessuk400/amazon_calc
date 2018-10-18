@@ -6,7 +6,8 @@ module Calculations
 
     GBP_USD = 1
 
-    delegate :valid?, to: :result,              prefix: true, allow_nil: true
+    delegate :valid?, :token, to: :result, prefix: true, allow_nil: true
+
     delegate :gec,    to: :current_marketplace, prefix: true
     delegate :alpha3, to: :marketplace,         prefix: true
 
@@ -15,11 +16,7 @@ module Calculations
     end
 
     def result
-      @result ||= Calculation.create(create_params) if fba_fee_per_unit
-    end
-
-    def result_params
-      { result_id: result.id }
+      @result ||= Calculations::Create.call(params: create_params) if fba_fee_per_unit
     end
 
     def error_redirect_params
@@ -34,7 +31,7 @@ module Calculations
     attr_reader :info
 
     def error_message
-      'Please, check dimensions and weight'
+      I18n.t('views.results.errors.dimension_weight_error')
     end
 
     def create_params

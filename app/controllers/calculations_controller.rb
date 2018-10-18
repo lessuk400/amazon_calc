@@ -6,6 +6,8 @@ class CalculationsController < ApplicationController
 
     return redirect_back(@facade.error_redirect_params) unless @facade.result_valid?
 
-    redirect_to calculations_results_path(params: @facade.result_params)
+    session[:last_result_token] = @facade.result_token
+
+    redirect_to calculations_results_path
   end
 end
